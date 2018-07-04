@@ -1,12 +1,13 @@
 {
-  "name": "simplereverseshell",
+  "name": "simplereversenode",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple example of a reverse Node js REPL. Like a reverse shell",
   "main": "Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node Server.js",
-    "client": "node Client.js"
+    "client:node": "node NodeClient.js",
+    "client:shell": "node ShellClient.js"
   },
   "author": "Carlos Domínguez García",
   "license": "MIT",
