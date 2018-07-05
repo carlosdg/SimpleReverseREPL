@@ -1,3 +1,9 @@
+/**
+ * Client that provides a Node REPL to the server
+ *
+ * @author Carlos Domínguez García
+ */
+
 const net = require('net');
 const repl = require('repl');
 

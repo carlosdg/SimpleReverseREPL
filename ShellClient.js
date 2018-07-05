@@ -1,3 +1,10 @@
+/**
+ * Client that provides a stateless Shell to the server
+ * (uses exec for each command, that's because it is stateless)
+ *
+ * @author Carlos Domínguez García
+ */
+
 const net = require('net');
 const { exec } = require('child_process');
 

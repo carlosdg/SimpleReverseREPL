@@ -1,3 +1,10 @@
+/**
+ * Server that waits for a client connection and allows
+ * the user to send commands to that client
+ *
+ * @author Carlos Domínguez García
+ */
+
 const net = require('net');
 const readline = require('readline');
 
